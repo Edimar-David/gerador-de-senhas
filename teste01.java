@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class teste01 {
     public static void main(String[] args) {
-        String password;
+        String password = "";
         GeradorDeSenha passwordGenerate = new GeradorDeSenha();
         Scanner scan = new Scanner(System.in);
         Boolean vaiternumeros = false;
@@ -30,8 +30,7 @@ public class teste01 {
         choose = scan.nextLine();
         System.out.println("ok " + choose + " vai ter simbolos");
 
-
-
+        scan.close();
 
         password = passwordGenerate.gerarSenha(vaiternumeros, characterCount);
 

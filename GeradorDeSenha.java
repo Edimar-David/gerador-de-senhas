@@ -1,7 +1,7 @@
 import java.util.Random;
 
 public class GeradorDeSenha {
-       private String password = "";
+       private StringBuilder password = new StringBuilder();
        private char character;
        private Boolean isUppercase;
        private Boolean isNumber;
@@ -15,19 +15,23 @@ public class GeradorDeSenha {
                 }else{isNumber = false;}
 
                 if(isNumber){
-                    character = (char) (random.nextInt(10) + '0');
+                    getCharacter(10, '0');
                 }else {
                     isUppercase = random.nextBoolean();
                     if (isUppercase) {
-                        character = (char) (random.nextInt(26) + 'A');
+                        getCharacter(26, 'A');
                     } else {
-                        character = (char) (random.nextInt(26) + 'a');
+                        getCharacter(26, 'a');
                     }
                 }
-                password += character;
+                password.append(character);
+
             }
-            return password;
+            return password.toString();
         }
 
-
+        private char getCharacter(int baseChar, char startingChar){
+            character = (char) (random.nextInt(value) + startingChar);
+            return character;
+        }
 }
