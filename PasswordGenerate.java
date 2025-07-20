@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class GeradorDeSenha {
+public class PasswordGenerate {
        private StringBuilder password = new StringBuilder();
        private char character;
        private Boolean isUppercase;
@@ -8,16 +8,19 @@ public class GeradorDeSenha {
 
         Random random = new Random();
 
-        public String gerarSenha(Boolean numeros, int characterCount){
+        public String generate(boolean canNumbers, boolean canUppercase, int characterCount){
             for (int i = 0; i < characterCount; i++) {
-                if(numeros) {
+
+                if(canNumbers){
                     isNumber = random.nextBoolean();
                 }else{isNumber = false;}
+                if(canUppercase){
+                    isUppercase = random.nextBoolean();
+                }else{isUppercase = false;}
 
                 if(isNumber){
                     getCharacter(10, '0');
                 }else {
-                    isUppercase = random.nextBoolean();
                     if (isUppercase) {
                         getCharacter(26, 'A');
                     } else {
@@ -31,7 +34,7 @@ public class GeradorDeSenha {
         }
 
         private char getCharacter(int baseChar, char startingChar){
-            character = (char) (random.nextInt(value) + startingChar);
+            character = (char) (random.nextInt(baseChar) + startingChar);
             return character;
         }
 }
